@@ -3,6 +3,9 @@ import git
 
 
 def main():
+    language = lang.get_lang("./")
+    print(language)
+
     has_git_dir = git.has_git("./")
     if has_git_dir:
         print("Is git!")

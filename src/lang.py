@@ -19,15 +19,18 @@ def has_sub_file(path: str, sub: str) -> bool:
 
 
 def get_lang(path: str) -> Lang:
-    if has_sub_file(path, "/setup.py"):
+    if path[-1] != "/":
+        path += "/"
+
+    if has_sub_file(path, "setup.py"):
         return Lang.PYTHON
-    elif has_sub_file(path, "/package.json"):
+    elif has_sub_file(path, "package.json"):
         return Lang.JS
-    elif has_sub_file(path, "/Cargo.toml"):
+    elif has_sub_file(path, "Cargo.toml"):
         return Lang.RUST
-    elif has_sub_file(path, "/pom.xml"):
+    elif has_sub_file(path, "pom.xml"):
         return Lang.JAVA
-    elif has_sub_file(path, "/go.mod"):
+    elif has_sub_file(path, "go.mod"):
         return Lang.GO
 
     return Lang.NONE
